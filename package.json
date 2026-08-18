@@ -7,8 +7,7 @@
   ],
   "scripts": {
     "dev:website": "npm run dev --workspace=@warrior-code/website",
-    "build:website": "npm run build --workspace=@warrior-code/website",
-    "deploy:website": "npm run build:website && wrangler pages deploy apps/website/dist --project-name warrior-code"
+    "build:website": "npm run build --workspace=@warrior-code/website"
   },
   "devDependencies": {
     "wrangler": "^4.124.0"
