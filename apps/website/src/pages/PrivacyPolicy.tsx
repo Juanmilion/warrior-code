@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom"
 import { Container } from "@/components/layout/Container"
 import { ArrowLeft } from "lucide-react"
+import { ScrollToTop } from "@/components/layout/ScrollToTop"
 
 export function PrivacyPolicy() {
     const nif = "29631390F"
 
     return (
         <main className="min-h-screen bg-background text-foreground">
+            <ScrollToTop />
             <Container>
                 <article className="mx-auto max-w-3xl py-32">
                     <Link
