@@ -170,7 +170,7 @@ export function Contact() {
                                         </span>
 
                                         <span className="text-sm font-medium">
-                                            hola@warriorcode.es
+                                            adminwarriorcode@gmail.com
                                         </span>
                                     </div>
                                 </div>
