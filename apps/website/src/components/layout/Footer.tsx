@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const navigation = [
     { label: "Servicios", href: "#servicios" },
     { label: "Ejemplos", href: "#ejemplos" },
@@ -43,26 +45,17 @@ export function Footer() {
                     <span>© {new Date().getFullYear()} Warrior Code</span>
 
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                        <a
-                            href="#"
-                            className="transition-colors hover:text-foreground"
-                        >
+                        <Link to="/aviso-legal">
                             Aviso legal
-                        </a>
+                        </Link>
 
-                        <a
-                            href="#"
-                            className="transition-colors hover:text-foreground"
-                        >
+                        <Link to="/privacidad">
                             Privacidad
-                        </a>
+                        </Link>
 
-                        <a
-                            href="#"
-                            className="transition-colors hover:text-foreground"
-                        >
+                        <Link to="/cookies">
                             Cookies
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
