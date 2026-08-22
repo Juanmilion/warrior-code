@@ -57,7 +57,11 @@ export function Hero() {
                     </div>
 
                     <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button size="lg" className="px-8 shadow-[0_18px_35px_rgba(168,85,247,0.28)]">
+                        <Button
+                            render={<a href="#contacto" />}
+                            size="lg"
+                            className="px-8 shadow-[0_18px_35px_rgba(168,85,247,0.28)]"
+                        >
                             Quiero mi web →
                         </Button>
 

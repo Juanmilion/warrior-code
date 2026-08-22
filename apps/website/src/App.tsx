@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 import { FAQ } from "@/components/sections/FAQ"
-import { FinalCTA } from "@/components/sections/FinalCTA"
+// import { FinalCTA } from "@/components/sections/FinalCTA"
 import { Hero } from "@/components/sections/Hero"
 import { Pricing } from "@/components/sections/Pricing"
 import { Services } from "@/components/sections/Services"
 import { Showcase } from "@/components/sections/Showcase"
 import { ValueProps } from "@/components/sections/ValueProps"
+import { Contact } from "./components/sections/Contact"
 
 function App() {
     return (
@@ -19,7 +20,8 @@ function App() {
             <Showcase />
             <Pricing />
             <FAQ />
-            <FinalCTA />
+            <Contact />
+            {/* <FinalCTA /> */}
             <Footer />
         </main>
     )

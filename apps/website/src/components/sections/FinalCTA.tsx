@@ -32,6 +32,7 @@ export function FinalCTA() {
 
                         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                             <Button
+                                render={<a href="#contacto" />}
                                 size="lg"
                                 className="h-11 rounded-xl px-6 shadow-[0_18px_35px_rgba(168,85,247,0.3)]"
                             >

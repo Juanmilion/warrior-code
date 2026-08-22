@@ -83,7 +83,11 @@ export function Pricing() {
                                         </div>
                                     </div>
 
-                                    <Button size="lg" className="mt-8 w-full sm:w-auto">
+                                    <Button
+                                        render={<a href="#contacto" />}
+                                        size="lg"
+                                        className="mt-8 w-full sm:w-auto"
+                                    >
                                         Quiero mi web
                                     </Button>
                                 </div>

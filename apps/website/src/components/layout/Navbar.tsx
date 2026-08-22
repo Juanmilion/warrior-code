@@ -63,6 +63,7 @@ export function Navbar() {
                             Ver ejemplos
                         </Button>
                         <Button
+                            render={<a href="#contacto" />}
                             size="sm"
                             className="group bg-gradient-to-r from-primary to-primary/80 text-primary-foreground transition-shadow hover:shadow-lg hover:shadow-primary/25"
                         >
@@ -113,6 +114,7 @@ export function Navbar() {
                                 Ver ejemplos
                             </Button>
                             <Button
+                                render={<a href="#contacto" />}
                                 size="sm"
                                 className="w-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground"
                             >
