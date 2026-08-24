@@ -1366,6 +1366,8 @@ function renderDashboard(
     name="viewport"
     content="width=device-width, initial-scale=1.0"
 >
+    <link rel="icon" type="image/png" href="/public/warrior-code-favicon.png" />
+
 
 <title>
     Warrior Code · Lead Intelligence V2
