@@ -10,6 +10,8 @@
     "score": "node src/score-sales.js",
     "report": "node src/generate-report.js",
     "merge": "node src/merge-leads.js",
+    "git:save": "node src/git-save.js",
+    "merge:push": "npm run merge && npm run git:save",
     "pipeline": "npm run process && npm run discover && npm run check:websites && npm run score && npm run report",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
