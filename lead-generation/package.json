@@ -1,0 +1,25 @@
+{
+  "name": "lead-generation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "process": "node src/process-leads.js",
+    "discover": "node src/website-discovery.js",
+    "check:websites": "node src/website-checker.js",
+    "score": "node src/score-sales.js",
+    "report": "node src/generate-report.js",
+    "pipeline": "npm run process && npm run discover && npm run check:websites && npm run score && npm run report",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "csv-parse": "^7.0.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.12"
+  }
+}

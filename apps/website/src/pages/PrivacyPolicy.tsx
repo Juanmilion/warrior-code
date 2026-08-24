@@ -5,7 +5,7 @@ import { Container } from "@/components/layout/Container"
 import { ScrollToTop } from "@/components/layout/ScrollToTop"
 
 export function PrivacyPolicy() {
-    const nif = "29631390F"
+    const nif = "**********" // Replace with the actual NIF value
 
     return (
         <main className="min-h-screen bg-background text-foreground">
