@@ -6,7 +6,7 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const OUTPUT_DIR = path.join(ROOT, "output");
 const REPORT_DIR = path.join(OUTPUT_DIR, "reports");
-const REPORT_FILE = path.join(REPORT_DIR, "lead-dashboard.html");
+const REPORT_FILE = path.join(REPORT_DIR, "index.html");
 
 // ============================================================
 // CONFIGURACIÓN
