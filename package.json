@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "dev:website": "npm run dev --workspace=@warrior-code/website",
-    "build:website": "npm run build --workspace=@warrior-code/website"
+    "build:website": "npm run build --workspace=@warrior-code/website",
+    "git:save": "node scripts/git-save.js"
   },
   "devDependencies": {
     "wrangler": "^4.124.0"
