@@ -1,0 +1,9651 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Warrior Code · Lead Intelligence V2
+</title>
+
+<style>
+
+:root {
+    --bg: #080b12;
+    --panel: #111722;
+    --panel2: #171e2c;
+    --line: #283244;
+    --text: #f2f5f9;
+    --muted: #8995a8;
+    --blue: #60a5fa;
+    --green: #4ade80;
+    --yellow: #facc15;
+    --red: #fb7185;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(
+            circle at top,
+            #172033 0,
+            var(--bg) 45%
+        );
+    color: var(--text);
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+main {
+    max-width: 1500px;
+    margin: auto;
+    padding: 45px 25px 80px;
+}
+
+header {
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .72rem;
+    color: var(--blue);
+    font-weight: 800;
+}
+
+h1 {
+    font-size: clamp(
+        2rem,
+        5vw,
+        3.5rem
+    );
+    margin: 8px 0;
+}
+
+.subtitle {
+    color: var(--muted);
+    max-width: 850px;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(170px, 1fr)
+        );
+    gap: 14px;
+    margin-bottom: 35px;
+}
+
+.metric {
+    background:
+        rgba(17,23,34,.92);
+    border:
+        1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.metric strong {
+    display: block;
+    font-size: 2rem;
+}
+
+.metric span {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.section {
+    margin-top: 45px;
+}
+
+.section-header {
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+.section-header p {
+    color: var(--muted);
+}
+
+.table-wrap {
+    overflow-x: auto;
+    background: var(--panel);
+    border:
+        1px solid var(--line);
+    border-radius: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 950px;
+}
+
+th,
+td {
+    padding: 13px 15px;
+    border-bottom:
+        1px solid var(--line);
+    text-align: left;
+}
+
+th {
+    color: var(--muted);
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.rank {
+    color: var(--muted);
+}
+
+.potential {
+    display: inline-flex;
+    min-width: 42px;
+    justify-content: center;
+    padding: 5px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+}
+
+.excellent {
+    color: var(--green);
+}
+
+.good {
+    color: #93c5fd;
+}
+
+.medium {
+    color: var(--yellow);
+}
+
+.potential.excellent {
+    background:
+        rgba(74,222,128,.12);
+}
+
+.potential.good {
+    background:
+        rgba(96,165,250,.12);
+}
+
+.potential.medium {
+    background:
+        rgba(250,204,21,.12);
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+input,
+select {
+    background: var(--panel);
+    border:
+        1px solid var(--line);
+    color: var(--text);
+    padding: 11px 13px;
+    border-radius: 9px;
+    font: inherit;
+}
+
+input {
+    flex: 1;
+    min-width: 280px;
+}
+
+.leads-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(330px, 1fr)
+        );
+    gap: 16px;
+}
+
+.lead-card {
+    background: var(--panel);
+    border:
+        1px solid var(--line);
+    border-radius: 16px;
+    padding: 19px;
+}
+
+.lead-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lead-rank {
+    color: var(--muted);
+    font-size: .75rem;
+}
+
+.lead-card h3 {
+    margin: 3px 0;
+    font-size: 1.1rem;
+}
+
+.category,
+.niche {
+    margin: 3px 0;
+    color: var(--muted);
+}
+
+.niche {
+    color: var(--blue);
+    font-size: .82rem;
+}
+
+.lead-score {
+    text-align: center;
+    background: var(--panel2);
+    border-radius: 11px;
+    padding: 8px 11px;
+    height: fit-content;
+}
+
+.lead-score strong {
+    display: block;
+    font-size: 1.5rem;
+}
+
+.lead-score span {
+    font-size: .65rem;
+    font-weight: 800;
+}
+
+.stats {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.stats span {
+    background: var(--panel2);
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: .72rem;
+}
+
+.stats .danger {
+    color: var(--red);
+}
+
+.stats .warning {
+    color: var(--yellow);
+}
+
+.lead-body {
+    color: #c5cedc;
+    font-size: .88rem;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 16px;
+}
+
+.actions a {
+    color: #93c5fd;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+.explanation {
+    background: var(--panel);
+    border:
+        1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.explanation strong {
+    color: var(--text);
+}
+
+@media(max-width:700px) {
+
+    main {
+        padding:
+            28px 15px 60px;
+    }
+
+    .metrics {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<header>
+
+<p class="eyebrow">
+Warrior Code · Lead Intelligence V2
+</p>
+
+<h1>
+¿Dónde debo vender primero?
+</h1>
+
+<p class="subtitle">
+Dashboard comercial generado localmente.
+El ranking de nichos prioriza el tamaño de la oportunidad,
+la cantidad de negocios vendibles y la calidad de los leads,
+no simplemente el porcentaje de HIGH.
+</p>
+
+</header>
+
+<section class="metrics">
+
+<div class="metric">
+<strong>83</strong>
+<span>Leads totales</span>
+</div>
+
+<div class="metric">
+<strong>83</strong>
+<span>Leads vendibles</span>
+</div>
+
+<div class="metric">
+<strong>28</strong>
+<span>HIGH</span>
+</div>
+
+<div class="metric">
+<strong>55</strong>
+<span>Sin web</span>
+</div>
+
+<div class="metric">
+<strong>2</strong>
+<span>Web débil</span>
+</div>
+
+<div class="metric">
+<strong>
+Automoción
+</strong>
+<span>Mejor nicho</span>
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-header">
+
+<h2>
+🥇 Mejores nichos para atacar
+</h2>
+
+<p>
+El ranking evita que un nicho con 1 solo negocio
+domine artificialmente el mercado.
+</p>
+
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+<th>Nicho</th>
+<th>Leads</th>
+<th>Vendibles</th>
+<th>HIGH</th>
+<th>% HIGH</th>
+<th>Sin web</th>
+<th>Web débil</th>
+<th>Score medio</th>
+<th>Potencial</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+
+<tr>
+    <td class="rank">
+        1
+    </td>
+
+    <td>
+        <strong>
+            Automoción
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            36
+        </strong>
+    </td>
+
+    <td>
+        <strong class="excellent">
+            36
+        </strong>
+    </td>
+
+    <td>
+        16
+    </td>
+
+    <td>
+        44.4%
+    </td>
+
+    <td>
+        21
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        67.6
+    </td>
+
+    <td>
+        <span class="potential excellent">
+            100
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        2
+    </td>
+
+    <td>
+        <strong>
+            Electricidad
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            24
+        </strong>
+    </td>
+
+    <td>
+        <strong class="excellent">
+            24
+        </strong>
+    </td>
+
+    <td>
+        8
+    </td>
+
+    <td>
+        33.3%
+    </td>
+
+    <td>
+        18
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        61.5
+    </td>
+
+    <td>
+        <span class="potential excellent">
+            100
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        3
+    </td>
+
+    <td>
+        <strong>
+            Fontanería
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            6
+        </strong>
+    </td>
+
+    <td>
+        <strong class="good">
+            6
+        </strong>
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        0%
+    </td>
+
+    <td>
+        5
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        55.5
+    </td>
+
+    <td>
+        <span class="potential good">
+            53
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        4
+    </td>
+
+    <td>
+        <strong>
+            Cerrajería
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            9
+        </strong>
+    </td>
+
+    <td>
+        <strong class="good">
+            9
+        </strong>
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        0%
+    </td>
+
+    <td>
+        4
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        55.7
+    </td>
+
+    <td>
+        <span class="potential good">
+            51
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        5
+    </td>
+
+    <td>
+        <strong>
+            Reformas y construcción
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            3
+        </strong>
+    </td>
+
+    <td>
+        <strong class="medium">
+            3
+        </strong>
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        33.3%
+    </td>
+
+    <td>
+        3
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        61.7
+    </td>
+
+    <td>
+        <span class="potential medium">
+            33
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        6
+    </td>
+
+    <td>
+        <strong>
+            Relojería
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            1
+        </strong>
+    </td>
+
+    <td>
+        <strong class="">
+            1
+        </strong>
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        100%
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        85
+    </td>
+
+    <td>
+        <span class="potential ">
+            16
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        7
+    </td>
+
+    <td>
+        <strong>
+            Proveedor de repuestos de electrodomésticos
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            1
+        </strong>
+    </td>
+
+    <td>
+        <strong class="">
+            1
+        </strong>
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        100%
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        84
+    </td>
+
+    <td>
+        <span class="potential ">
+            16
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        8
+    </td>
+
+    <td>
+        <strong>
+            Taller de bicicletas
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            1
+        </strong>
+    </td>
+
+    <td>
+        <strong class="">
+            1
+        </strong>
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        100%
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        85
+    </td>
+
+    <td>
+        <span class="potential ">
+            16
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        9
+    </td>
+
+    <td>
+        <strong>
+            Otros
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            1
+        </strong>
+    </td>
+
+    <td>
+        <strong class="">
+            1
+        </strong>
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        0%
+    </td>
+
+    <td>
+        1
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        55
+    </td>
+
+    <td>
+        <span class="potential ">
+            12
+        </span>
+    </td>
+</tr>
+
+<tr>
+    <td class="rank">
+        10
+    </td>
+
+    <td>
+        <strong>
+            Concesionario de motos
+        </strong>
+    </td>
+
+    <td>
+        <strong>
+            1
+        </strong>
+    </td>
+
+    <td>
+        <strong class="">
+            1
+        </strong>
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        0%
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        0
+    </td>
+
+    <td>
+        51
+    </td>
+
+    <td>
+        <span class="potential ">
+            11
+        </span>
+    </td>
+</tr>
+
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="explanation">
+
+<strong>
+Cómo interpretar el ranking:
+</strong>
+
+<br>
+
+El <strong>Potencial</strong> combina volumen,
+leads vendibles, oportunidades HIGH,
+negocios sin web, webs débiles y calidad media.
+Además, las muestras demasiado pequeñas reciben
+una penalización para evitar conclusiones falsas.
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="section-header">
+
+<h2>
+🎯 Negocios a contactar
+</h2>
+
+<p>
+Ordenados por oportunidad comercial individual.
+</p>
+
+</div>
+
+<div class="controls">
+
+<input
+    id="search"
+    type="search"
+    placeholder="Buscar negocio, nicho o categoría..."
+>
+
+<select id="level">
+
+<option value="">
+Todos
+</option>
+
+<option value="HIGH">
+HIGH
+</option>
+
+<option value="MEDIUM">
+MEDIUM
+</option>
+
+<option value="LOW">
+LOW
+</option>
+
+</select>
+
+<select id="sellable">
+
+<option value="">
+Todos
+</option>
+
+<option value="true">
+Solo vendibles
+</option>
+
+<option value="false">
+No vendibles
+</option>
+
+</select>
+
+</div>
+
+<div
+    class="leads-grid"
+    id="leads"
+>
+
+
+<article
+    class="lead-card"
+    data-search="taller mecanico j.suarez
+             taller mecanico
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #1
+        </div>
+
+        <h3>
+            Taller Mecánico J.Suarez
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            92
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        139
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 685 86 72 23
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Taller%20Mec%C3%A1nico%20J.Suarez&amp;query_place_id=ChIJ4epH39vPEQ0RcWfc-ZKGt_o"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="auto mecanica zafra
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #2
+        </div>
+
+        <h3>
+            Auto Mecánica Zafra
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            89
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        63
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 04 83 53
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Auto%20Mec%C3%A1nica%20Zafra&amp;query_place_id=ChIJmZgs7y7QEQ0RSlnTsHFD9_Y"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres hermanos romero minchon
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #3
+        </div>
+
+        <h3>
+            Talleres Hermanos Romero Minchon
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            89
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        50
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 606 43 82 50
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Hermanos%20Romero%20Minchon&amp;query_place_id=ChIJk2NUFxvQEQ0RBKcf6Igs-cA"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres asdrubal
+             taller de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #4
+        </div>
+
+        <h3>
+            Talleres Asdrubal
+        </h3>
+
+        <p class="category">
+            Taller de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            85
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        86
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 638 95 35 53
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Asdrubal&amp;query_place_id=ChIJ5XHeox7QEQ0RwruJ1EL5arc"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="monoplato bike workshop
+             taller de bicicletas
+             taller de bicicletas"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #5
+        </div>
+
+        <h3>
+            Monoplato Bike Workshop
+        </h3>
+
+        <p class="category">
+            Taller de bicicletas
+        </p>
+
+        <p class="niche">
+            Taller de bicicletas
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            85
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        74
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 686 06 89 57
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Monoplato%20Bike%20Workshop&amp;query_place_id=ChIJd0ehmzrREQ0RP-392Y2eK0o"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="tocar motor sl
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #6
+        </div>
+
+        <h3>
+            Tocar Motor SL
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            85
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        58
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 27 02 12
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Tocar%20Motor%20SL&amp;query_place_id=ChIJh7GD-f_PEQ0RU8omK9IFCNs"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="relojero express
+             relojeria
+             relojeria"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #7
+        </div>
+
+        <h3>
+            Relojero Express
+        </h3>
+
+        <p class="category">
+            Relojería
+        </p>
+
+        <p class="niche">
+            Relojería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            85
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        52
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 666 80 42 78
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Relojero%20Express&amp;query_place_id=ChIJiT6mSI3REQ0R5x8H16nSFgQ"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="motos pepe taller
+             taller de reparacion de motos
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #8
+        </div>
+
+        <h3>
+            Motos Pepe Taller
+        </h3>
+
+        <p class="category">
+            Taller de reparación de motos
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            85
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        52
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 81 33 66
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Motos%20Pepe%20Taller&amp;query_place_id=ChIJsTi-ZRfQEQ0RhF0dckK9DZ8"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="mecanica rapida carsur
+             taller mecanico
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #9
+        </div>
+
+        <h3>
+            Mecánica Rápida Carsur
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            85
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.6
+    </span>
+
+    <span>
+        51
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 61 07 21
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Mec%C3%A1nica%20R%C3%A1pida%20Carsur&amp;query_place_id=ChIJo6_jTADQEQ0RQUKumdULnnw"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres vargas c.b.
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #10
+        </div>
+
+        <h3>
+            Talleres Vargas C.B.
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            84
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        42
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 24 27 81
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Vargas%20C.B.&amp;query_place_id=ChIJ2X5HLgfQEQ0RfFmwJWHebuE"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="onutecni
+             proveedor de repuestos de electrodomesticos
+             proveedor de repuestos de electrodomesticos"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #11
+        </div>
+
+        <h3>
+            Onutecni
+        </h3>
+
+        <p class="category">
+            Proveedor de repuestos de electrodomésticos
+        </p>
+
+        <p class="niche">
+            Proveedor de repuestos de electrodomésticos
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            84
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        40
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 22 57 31
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Onutecni&amp;query_place_id=ChIJVRkdpRzQEQ0RUVsVbopGhcI"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="taller coac
+             taller mecanico
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #12
+        </div>
+
+        <h3>
+            TALLER COAC
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            84
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        37
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 24 44 33
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=TALLER%20COAC&amp;query_place_id=ChIJaw1njijQEQ0RRNVND00iqSg"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="neumatec
+             taller mecanico
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #13
+        </div>
+
+        <h3>
+            Neumatec
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            82
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        72
+        reseñas
+    </span>
+
+    
+
+    
+
+    <span>SOCIAL</span>
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia social pero no una web propia sólida.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 80 30 74
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Neumatec&amp;query_place_id=ChIJS_kUlhfQEQ0RuxDx-zFIOms"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.facebook.com/neumatec.cb"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="autosire
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #14
+        </div>
+
+        <h3>
+            AUTOSIRE
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            80
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        37
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 80 10 96
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=AUTOSIRE&amp;query_place_id=ChIJQ7WpngTQEQ0RM0JckNJ_GqU"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres lauren
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #15
+        </div>
+
+        <h3>
+            Talleres Lauren
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            78
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.3
+    </span>
+
+    <span>
+        55
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 28 44 12
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Lauren&amp;query_place_id=ChIJhyWU8RDQEQ0RqrZ4WjFIG7g"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="autobox
+             taller de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #16
+        </div>
+
+        <h3>
+            Autobox
+        </h3>
+
+        <p class="category">
+            Taller de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            77
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        40
+        reseñas
+    </span>
+
+    
+
+    
+
+    <span>SOCIAL</span>
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia social pero no una web propia sólida.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 681 16 31 28
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Autobox&amp;query_place_id=ChIJnco6gKnaEQ0R2HFbGck97M0"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.facebook.com/autoboxhuelva/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="taller autoprime
+             taller mecanico
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #17
+        </div>
+
+        <h3>
+            TALLER AUTOPRIME
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            77
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        35
+        reseñas
+    </span>
+
+    
+
+    
+
+    <span>SOCIAL</span>
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia social pero no una web propia sólida.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 623 27 98 90
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=TALLER%20AUTOPRIME&amp;query_place_id=ChIJYwDswWXPEQ0RHF82t3rmtII"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.facebook.com/profile.php?id=100072087495287"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electricidad luz del odiel
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #18
+        </div>
+
+        <h3>
+            ELECTRICIDAD LUZ DEL ODIEL
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            76
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        25
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 19 83 56
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=ELECTRICIDAD%20LUZ%20DEL%20ODIEL&amp;query_place_id=ChIJ9agrd_SDUWoRkvMOhAORUqM"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="ramon barba bernal
+             taller de reparacion de automoviles
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #19
+        </div>
+
+        <h3>
+            Ramón Barba Bernal
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            76
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        20
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 22 82 19
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Ram%C3%B3n%20Barba%20Bernal&amp;query_place_id=ChIJCaYEIQPQEQ0Rq4e5rgKnPqg"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="acotec porteros
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #20
+        </div>
+
+        <h3>
+            Acotec Porteros
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        6
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 675 50 53 47
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Acotec%20Porteros&amp;query_place_id=ChIJxzLbvRzQEQ0ReFPvNhjgf4g"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="reformas colombia
+             reformas
+             reformas y construccion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #21
+        </div>
+
+        <h3>
+            Reformas Colombia
+        </h3>
+
+        <p class="category">
+            Reformas
+        </p>
+
+        <p class="niche">
+            Reformas y construcción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        5
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 666 95 42 46
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Reformas%20Colombia&amp;query_place_id=ChIJy8UOVVTREQ0RfyvpSOoFZW4"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="teyva huelva
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #22
+        </div>
+
+        <h3>
+            TEYVA HUELVA
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        4
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 667 97 97 90
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=TEYVA%20HUELVA&amp;query_place_id=ChIJS9ecZR3FEQ0R2TtZk6Wcx-c"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="reformas y multiservicios jd
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #23
+        </div>
+
+        <h3>
+            Reformas y Multiservicios JD
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        2
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 640 67 65 72
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Reformas%20y%20Multiservicios%20JD&amp;query_place_id=ChIJwSBVeQzREQ0R7n4Tnp2hs0E"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="marelec s l
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #24
+        </div>
+
+        <h3>
+            Marelec S L
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        2
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 27 19 08
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Marelec%20S%20L&amp;query_place_id=ChIJi9_zRSTQEQ0R-8Ws2x7AhIY"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electrica diego perez
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #25
+        </div>
+
+        <h3>
+            Eléctrica Diego Pérez
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 653 02 84 24
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=El%C3%A9ctrica%20Diego%20P%C3%A9rez&amp;query_place_id=ChIJBRFCcGfPEQ0RLWpAkKafgGM"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electricistas en huelva - daniel - electricistas en huelva 24h
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #26
+        </div>
+
+        <h3>
+            Electricistas en Huelva - Daniel - Electricistas en Huelva 24H
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 642 30 06 28
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Electricistas%20en%20Huelva%20-%20Daniel%20-%20Electricistas%20en%20Huelva%2024H&amp;query_place_id=ChIJ-W0Oq_VYLK4RzYm35gYeU9w"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="reforbiem
+             electricista
+             electricidad"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #27
+        </div>
+
+        <h3>
+            Reforbiem
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 603 58 45 73
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Reforbiem&amp;query_place_id=ChIJi0p5XNvREQ0RrddlmXqyPmI"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="el aleman taller mecanico
+             taller mecanico
+             automocion"
+    data-level="HIGH"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #28
+        </div>
+
+        <h3>
+            El Alemán Taller Mecánico
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            75
+        </strong>
+
+        <span>
+            HIGH
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 672 12 61 61
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=El%20Alem%C3%A1n%20Taller%20Mec%C3%A1nico&amp;query_place_id=ChIJHwGDaJTREQ0RofW-1O7V3tE"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres romero car
+             cerrajero
+             cerrajeria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #29
+        </div>
+
+        <h3>
+            Talleres Romero Car
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            73
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.1
+    </span>
+
+    <span>
+        40
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 22 67 18
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Romero%20Car&amp;query_place_id=ChIJr3uQpwDQEQ0R7_29aX2HskY"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="am motor
+             taller de reparacion de automoviles
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #30
+        </div>
+
+        <h3>
+            Am Motor
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            73
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.3
+    </span>
+
+    <span>
+        31
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 661 31 67 92
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Am%20Motor&amp;query_place_id=ChIJbUbFYADQEQ0RwGwDaDnTDOI"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="taller perlita
+             taller mecanico
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #31
+        </div>
+
+        <h3>
+            Taller Perlita
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            73
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        24
+        reseñas
+    </span>
+
+    
+
+    
+
+    <span>SOCIAL</span>
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia social pero no una web propia sólida.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 622 10 23 96
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Taller%20Perlita&amp;query_place_id=ChIJwXFPAkDREQ0Rsb4kvFL_Q0M"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.facebook.com/TallerPerlita/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electricista huelva
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #32
+        </div>
+
+        <h3>
+            ELECTRICISTA HUELVA
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            73
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        23
+        reseñas
+    </span>
+
+    
+
+    
+
+    <span>SOCIAL</span>
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia social pero no una web propia sólida.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 614 12 76 35
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=ELECTRICISTA%20HUELVA&amp;query_place_id=ChIJu_MHsqj3bW8R6K9CQEJRPCE"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.facebook.com/share/12HmP1sjyXp/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres iglesias (mecanica)
+             taller de automoviles
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #33
+        </div>
+
+        <h3>
+            Talleres Iglesias (Mecanica)
+        </h3>
+
+        <p class="category">
+            Taller de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            71
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        17
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 630 40 21 70
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Iglesias%20(Mecanica)&amp;query_place_id=ChIJhSjoTNjPEQ0RNvQxEUKfTVQ"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="motrio
+             taller mecanico
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #34
+        </div>
+
+        <h3>
+            Motrio
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            71
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        3
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 28 52 17
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Motrio&amp;query_place_id=ChIJKdPtRSTQEQ0R_cC95b_1mFw"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="francisco calderon jurado
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #35
+        </div>
+
+        <h3>
+            Francisco Calderón Jurado
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            71
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        2
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 28 59 44
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Francisco%20Calder%C3%B3n%20Jurado&amp;query_place_id=ChIJpX9wN9vPEQ0Rm8a7jRfofts"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres jr romero
+             taller mecanico
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #36
+        </div>
+
+        <h3>
+            Talleres JR Romero
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            69
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 3.7
+    </span>
+
+    <span>
+        55
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 80 53 87
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20JR%20Romero&amp;query_place_id=ChIJFyUsADDQEQ0RJcss8WIr_II"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="hermanos silva de lara
+             taller mecanico
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #37
+        </div>
+
+        <h3>
+            Hermanos Silva de Lara
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            65
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Hermanos%20Silva%20de%20Lara&amp;query_place_id=ChIJZ6CFbhvQEQ0RpZSy75trB6k"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="almacen de fontaneria el molino
+             
+             fontaneria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #38
+        </div>
+
+        <h3>
+            Almacen De Fontaneria El Molino
+        </h3>
+
+        <p class="category">
+            Negocio local
+        </p>
+
+        <p class="niche">
+            Fontanería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            64
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.3
+    </span>
+
+    <span>
+        12
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 25 23 53
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Almacen%20De%20Fontaneria%20El%20Molino&amp;query_place_id=ChIJX8yZKdbPEQ0RyifhqfvD1Vk"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="cerrajero huelva | onukeys
+             cerrajero
+             cerrajeria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #39
+        </div>
+
+        <h3>
+            Cerrajero Huelva | ONUKEYS
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        590
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 613 15 12 12
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Cerrajero%20Huelva%20%7C%20ONUKEYS&amp;query_place_id=ChIJQ4_OxT332q4RvkDKG_kOSCM"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://cerrajerohuelvaonukeys.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="cerrajero costa de la luz
+             cerrajero
+             cerrajeria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #40
+        </div>
+
+        <h3>
+            Cerrajero Costa de la Luz
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        338
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 656 44 47 00
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Cerrajero%20Costa%20de%20la%20Luz&amp;query_place_id=ChIJ-7TQ3B_QEQ0R8Q2V0lb3Gds"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://cerrajerocostadelaluz.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="ach electricidad
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #41
+        </div>
+
+        <h3>
+            ACH ELECTRICIDAD
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 3.3
+    </span>
+
+    <span>
+        7
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 628 87 43 61
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=ACH%20ELECTRICIDAD&amp;query_place_id=ChIJEdN_5MHPEQ0R-xpV2zQW_Fg"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="onuba vertical
+             constructor
+             reformas y construccion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #42
+        </div>
+
+        <h3>
+            Onuba vertical
+        </h3>
+
+        <p class="category">
+            Constructor
+        </p>
+
+        <p class="niche">
+            Reformas y construcción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 2
+    </span>
+
+    <span>
+        4
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 642 30 27 21
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Onuba%20vertical&amp;query_place_id=ChIJswcM9O7REQ0R3dR3wTsfOX0"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="recambios cortegana
+             taller mecanico
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #43
+        </div>
+
+        <h3>
+            Recambios Cortegana
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 3.8
+    </span>
+
+    <span>
+        4
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 13 11 33
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Recambios%20Cortegana&amp;query_place_id=ChIJFeBZ0xjQEQ0R3C8jG_2cK9s"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electricos escalante
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #44
+        </div>
+
+        <h3>
+            Eléctricos Escalante
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 2.5
+    </span>
+
+    <span>
+        2
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 664 41 17 89
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=El%C3%A9ctricos%20Escalante&amp;query_place_id=ChIJc2fKAjPPEQ0RDUsof7scAfY"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="mecanica pichardo
+             taller mecanico
+             automocion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #45
+        </div>
+
+        <h3>
+            Mecánica Pichardo
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 1
+    </span>
+
+    <span>
+        2
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 686 65 63 64
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Mec%C3%A1nica%20Pichardo&amp;query_place_id=ChIJZXDSWQ_REQ0RrozoH_S-tfQ"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="onuba multiservicios
+             cerrajero
+             cerrajeria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #46
+        </div>
+
+        <h3>
+            Onuba Multiservicios
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 1
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 642 30 27 21
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Onuba%20Multiservicios&amp;query_place_id=ChIJ0_JZq967f0MRwyCgLSpRfqc"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="j.perez alonso,s.l.
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #47
+        </div>
+
+        <h3>
+            J.PEREZ ALONSO,S.L.
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 3
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 25 69 47
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=J.PEREZ%20ALONSO%2CS.L.&amp;query_place_id=ChIJ0-WycyrQEQ0R_HRaS8MxjeQ"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="instalaciones delgado
+             contratista
+             reformas y construccion"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #48
+        </div>
+
+        <h3>
+            Instalaciones Delgado
+        </h3>
+
+        <p class="category">
+            Contratista
+        </p>
+
+        <p class="niche">
+            Reformas y construcción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 1
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 900 100 373
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Instalaciones%20Delgado&amp;query_place_id=ChIJwWRrq9_PEQ0Rw1iO8GJb0jY"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="servicios y mantenimientos arenas sl
+             cerrajero
+             cerrajeria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #49
+        </div>
+
+        <h3>
+            Servicios y Mantenimientos Arenas SL
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 10 06 51
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Servicios%20y%20Mantenimientos%20Arenas%20SL&amp;query_place_id=ChIJZVJoeQHFEQ0Rg9At0BuMomM"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="autosportmonkey
+             cerrajero
+             cerrajeria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #50
+        </div>
+
+        <h3>
+            autosportmonkey
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 644 33 34 74
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=autosportmonkey&amp;query_place_id=ChIJuQAo5MbE6EARW4-qEwqVZcc"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="cabling
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #51
+        </div>
+
+        <h3>
+            Cabling
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 25 00 50
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Cabling&amp;query_place_id=ChIJffd2KCnQEQ0R5YczbInLr5M"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="instalaciones cascales
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #52
+        </div>
+
+        <h3>
+            Instalaciones cascales
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 608 60 90 96
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Instalaciones%20cascales&amp;query_place_id=ChIJE4PysPrPEQ0RKGB65h5xFL8"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="servicios electricos s,l
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #53
+        </div>
+
+        <h3>
+            servicios electricos s,l
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 641 22 49 83
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=servicios%20electricos%20s%2Cl&amp;query_place_id=ChIJ8U9mTsXREQ0RbKoFwbkjVBk"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electricidad jlt
+             electricista
+             electricidad"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #54
+        </div>
+
+        <h3>
+            Electricidad JLT
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 642 43 19 93
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Electricidad%20JLT&amp;query_place_id=ChIJPYoyT64EjwMRKnftn7g0Zgg"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="fermogas soluciones
+             fontanero
+             fontaneria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #55
+        </div>
+
+        <h3>
+            fermogas soluciones
+        </h3>
+
+        <p class="category">
+            Fontanero
+        </p>
+
+        <p class="niche">
+            Fontanería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 663 43 45 33
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=fermogas%20soluciones&amp;query_place_id=ChIJX-hiOKGNhYcR1kfgVwGt-Jw"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="fontanero huelva leon
+             fontanero
+             fontaneria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #56
+        </div>
+
+        <h3>
+            Fontanero Huelva león
+        </h3>
+
+        <p class="category">
+            Fontanero
+        </p>
+
+        <p class="niche">
+            Fontanería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 641 50 67 39
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Fontanero%20Huelva%20le%C3%B3n&amp;query_place_id=ChIJ7baM9d3REQ0RQYr9zFlw2ho"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="molina sc material de fontaneria
+             fontanero
+             fontaneria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #57
+        </div>
+
+        <h3>
+            MOLINA SC MATERIAL DE FONTANERIA
+        </h3>
+
+        <p class="category">
+            Fontanero
+        </p>
+
+        <p class="niche">
+            Fontanería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 635 50 90 44
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=MOLINA%20SC%20MATERIAL%20DE%20FONTANERIA&amp;query_place_id=ChIJh0tqe5jREQ0RUryYLmtIrB0"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="rifonsa
+             
+             otros"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #58
+        </div>
+
+        <h3>
+            RIFONSA
+        </h3>
+
+        <p class="category">
+            Negocio local
+        </p>
+
+        <p class="niche">
+            Otros
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 22 92 77
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=RIFONSA&amp;query_place_id=ChIJYYgvnRvQEQ0RfI-0c_qACvM"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="fontanero juan arana
+             fontanero
+             fontaneria"
+    data-level="MEDIUM"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #59
+        </div>
+
+        <h3>
+            Fontanero juan arana
+        </h3>
+
+        <p class="category">
+            Fontanero
+        </p>
+
+        <p class="niche">
+            Fontanería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            55
+        </strong>
+
+        <span>
+            MEDIUM
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 696 54 30 11
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Fontanero%20juan%20arana&amp;query_place_id=ChIJ8TDTKzb5wg0Rvzy0uBWNM4o"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="instalaciones de redes del sur, s.l.l.
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #60
+        </div>
+
+        <h3>
+            Instalaciones de Redes del Sur, S.L.L.
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            54
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Instalaciones%20de%20Redes%20del%20Sur%2C%20S.L.L.&amp;query_place_id=ChIJn7phUNvPEQ0RRnDYLJvy8Is"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="cerrajero raul tortosa
+             cerrajero
+             cerrajeria"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #61
+        </div>
+
+        <h3>
+            Cerrajero Raúl Tortosa
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            52
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        192
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 634 81 66 37
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Cerrajero%20Ra%C3%BAl%20Tortosa&amp;query_place_id=ChIJJ33r2wHPEQ0R75WeEIMiJc4"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.cerrajerodehuelva.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="mv- reformas integrales
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #62
+        </div>
+
+        <h3>
+            MV- Reformas Integrales
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            52
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        158
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 693 03 95 36
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=MV-%20Reformas%20Integrales&amp;query_place_id=ChIJLR36oxfPEQ0R1P_HkjyUfD0"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.mv-reformas.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="cerrajeria huelva
+             cerrajero
+             cerrajeria"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #63
+        </div>
+
+        <h3>
+            Cerrajería Huelva
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            52
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        108
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 674 43 31 76
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Cerrajer%C3%ADa%20Huelva&amp;query_place_id=ChIJBTIvUhnREQ0R-ptAUA5YiwA"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://cerrajerohuelva.es/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres flores autohuelva - bosch car service
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #64
+        </div>
+
+        <h3>
+            Talleres Flores Autohuelva - Bosch Car Service
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            51
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        645
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 22 50 12
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Flores%20Autohuelva%20-%20Bosch%20Car%20Service&amp;query_place_id=ChIJWex3mADQEQ0RDeJasbJIUIQ"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.talleresfloreshuelva.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="carglass
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #65
+        </div>
+
+        <h3>
+            Carglass
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            51
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        357
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 46 23 46
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Carglass&amp;query_place_id=ChIJBdm2LS_QEQ0Rg7Hj-1mlMBY"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.carglass.es/localizaciones/huelva-alemania?utm_campaign=Carglass_Organic_GMB_Taller&amp;utm_creative_format=text&amp;utm_medium=organic&amp;utm_source=google"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="carglass
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #66
+        </div>
+
+        <h3>
+            Carglass
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            51
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        333
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 46 23 46
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Carglass&amp;query_place_id=ChIJu2uRJiDQEQ0RACd8ocDsgvo"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.carglass.es/localizaciones/huelva-andalucia?utm_campaign=Carglass_Organic_GMB_Taller&amp;utm_creative_format=text&amp;utm_medium=organic&amp;utm_source=google"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="melomotor
+             concesionario de motos
+             concesionario de motos"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #67
+        </div>
+
+        <h3>
+            Melomotor
+        </h3>
+
+        <p class="category">
+            Concesionario de motos
+        </p>
+
+        <p class="niche">
+            Concesionario de motos
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            51
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        300
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 23 16 99
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Melomotor&amp;query_place_id=ChIJ90ohxMjtEQ0RIP3JBEICMqw"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.melomotor.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="montajes electricos megadel s.l.
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #68
+        </div>
+
+        <h3>
+            Montajes Eléctricos Megadel S.L.
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        99
+        reseñas
+    </span>
+
+    
+
+    <span class="warning">WEB DÉBIL</span>
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene una web que presenta señales de mejora.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 693 70 29 01
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Montajes%20El%C3%A9ctricos%20Megadel%20S.L.&amp;query_place_id=ChIJqX0QycPFEQ0RzKGBsEWDAU0"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.megadel.es/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="desatasco elite
+             fontanero
+             fontaneria"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #69
+        </div>
+
+        <h3>
+            Desatasco Elite
+        </h3>
+
+        <p class="category">
+            Fontanero
+        </p>
+
+        <p class="niche">
+            Fontanería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        99
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 693 58 96 20
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Desatasco%20Elite&amp;query_place_id=ChIJ18KHeq7PEQ0Rk7qhjYVLEb4"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://desatascoelite.es/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="martin sport taller mecanico huelva
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #70
+        </div>
+
+        <h3>
+            Martin Sport Taller Mecánico Huelva
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.9
+    </span>
+
+    <span>
+        88
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 680 41 10 68
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Martin%20Sport%20Taller%20Mec%C3%A1nico%20Huelva&amp;query_place_id=ChIJdeOvhc_FEQ0RNJSFnNCgV4E"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://martinsport.es/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="marvaz - instalaciones electricas y telecomunicaciones
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #71
+        </div>
+
+        <h3>
+            Marvaz - Instalaciones Eléctricas y Telecomunicaciones
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        74
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 652 50 09 12
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Marvaz%20-%20Instalaciones%20El%C3%A9ctricas%20y%20Telecomunicaciones&amp;query_place_id=ChIJH8mzwVDREQ0RvaoGSZKcj9k"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.instalacionesmarvaz.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="taller auto confianza
+             taller de reparacion de automoviles
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #72
+        </div>
+
+        <h3>
+            TALLER AUTO CONFIANZA
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        74
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 81 68 66
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=TALLER%20AUTO%20CONFIANZA&amp;query_place_id=ChIJadVaOtjPEQ0RFKcSrHgZSMo"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.tallerautoconfianza.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="espamovil
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #73
+        </div>
+
+        <h3>
+            Espamovil
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        72
+        reseñas
+    </span>
+
+    
+
+    <span class="warning">WEB DÉBIL</span>
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene una web que presenta señales de mejora.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 26 20 32
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Espamovil&amp;query_place_id=ChIJpZmW2yHQEQ0RPVrPMvFdTWQ"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="http://www.espamovil.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="cerrajeros velasco huelva
+             cerrajero
+             cerrajeria"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #74
+        </div>
+
+        <h3>
+            Cerrajeros Velasco Huelva
+        </h3>
+
+        <p class="category">
+            Cerrajero
+        </p>
+
+        <p class="niche">
+            Cerrajería
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 5
+    </span>
+
+    <span>
+        57
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 626 18 12 71
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Cerrajeros%20Velasco%20Huelva&amp;query_place_id=ChIJJT_HVWE5ImoRIuh64AVal_E"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://cerrajerosvelascohuelva.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="agroflora onuba
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #75
+        </div>
+
+        <h3>
+            Agroflora Onuba
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            49
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.8
+    </span>
+
+    <span>
+        56
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 26 29 40
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Agroflora%20Onuba&amp;query_place_id=ChIJYzF1uCHQEQ0Rbfqccq27Xek"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.agrofloraonuba.es/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="24htodoelectric
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #76
+        </div>
+
+        <h3>
+            24hTodoelectric
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            48
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.6
+    </span>
+
+    <span>
+        212
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 656 92 87 50
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=24hTodoelectric&amp;query_place_id=ChIJx4sxQCDQEQ0RLCrjUGfUM8I"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://24htodoelectric.eu/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres hubert, s.l.
+             taller de automoviles
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #77
+        </div>
+
+        <h3>
+            Talleres Hubert, S.L.
+        </h3>
+
+        <p class="category">
+            Taller de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            48
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        113
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 656 57 44 88
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Hubert%2C%20S.L.&amp;query_place_id=ChIJZwleyRDQEQ0Rr-qdL1PTR4Y"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://tallereshubert.com/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="electricidad sd
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #78
+        </div>
+
+        <h3>
+            Electricidad SD
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            48
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ —
+    </span>
+
+    <span>
+        0
+        reseñas
+    </span>
+
+    
+
+    
+
+    <span>SOCIAL</span>
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia social pero no una web propia sólida.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 634 47 64 60
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Electricidad%20SD&amp;query_place_id=ChIJD7qmfADREQ0RZqlBNcud5Fw"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.facebook.com/share/166YDPtGTB/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="neumaticos jovicar
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #79
+        </div>
+
+        <h3>
+            Neumáticos Jovicar
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            45
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        94
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 601 19 62 47
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Neum%C3%A1ticos%20Jovicar&amp;query_place_id=ChIJJbuYKBzQEQ0RRHSvS4mzPqs"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.jovicartallerhuelva.es/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="talleres sergio vehiculos alta gama
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #80
+        </div>
+
+        <h3>
+            Talleres Sergio Vehículos Alta Gama
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            45
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.7
+    </span>
+
+    <span>
+        82
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 675 76 89 29
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Talleres%20Sergio%20Veh%C3%ADculos%20Alta%20Gama&amp;query_place_id=ChIJM9TkpyfREQ0RwNcABSFxFqI"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.tuwebmovil.es/empresa/talleres-sergio-vehiculos-alta-gama/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="lavados y engrases huelva sl
+             taller de reparacion de automoviles
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #81
+        </div>
+
+        <h3>
+            Lavados y Engrases Huelva SL
+        </h3>
+
+        <p class="category">
+            Taller de reparación de automóviles
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            45
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 4.5
+    </span>
+
+    <span>
+        77
+        reseñas
+    </span>
+
+    
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        Tiene presencia web.
+    </p>
+
+    
+<p>
+    <strong>
+        Teléfono:
+    </strong>
+
+    +34 959 28 52 17
+</p>
+
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Lavados%20y%20Engrases%20Huelva%20SL&amp;query_place_id=ChIJjx2KRSTQEQ0RMgFsf0hplf0"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+<a
+    href="https://www.tuwebmovil.es/empresa/lavados-y-engrases-huelva/"
+    target="_blank"
+    rel="noopener"
+>
+    Web ↗
+</a>
+
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="geosa
+             electricista
+             electricidad"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #82
+        </div>
+
+        <h3>
+            Geosa
+        </h3>
+
+        <p class="category">
+            Electricista
+        </p>
+
+        <p class="niche">
+            Electricidad
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            45
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 3.4
+    </span>
+
+    <span>
+        5
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=Geosa&amp;query_place_id=ChIJFZenZyrQEQ0RWidd54AJtog"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+<article
+    class="lead-card"
+    data-search="el nino hub - reparar patinetes huelva
+             taller mecanico
+             automocion"
+    data-level="LOW"
+    data-sellable="true"
+>
+
+<div class="lead-header">
+
+    <div>
+        <div class="lead-rank">
+            #83
+        </div>
+
+        <h3>
+            El Niño Hub - Reparar Patinetes Huelva
+        </h3>
+
+        <p class="category">
+            Taller mecánico
+        </p>
+
+        <p class="niche">
+            Automoción
+        </p>
+    </div>
+
+    <div class="lead-score">
+        <strong>
+            45
+        </strong>
+
+        <span>
+            LOW
+        </span>
+    </div>
+
+</div>
+
+<div class="stats">
+
+    <span>
+        ⭐ 1
+    </span>
+
+    <span>
+        1
+        reseñas
+    </span>
+
+    <span class="danger">SIN WEB</span>
+
+    
+
+    
+
+</div>
+
+<div class="lead-body">
+
+    <p>
+        <strong>
+            Oportunidad:
+        </strong>
+
+        No tiene web registrada.
+    </p>
+
+    
+
+</div>
+
+<div class="actions">
+
+    
+<a
+    href="https://www.google.com/maps/search/?api=1&amp;query=El%20Ni%C3%B1o%20Hub%20-%20Reparar%20Patinetes%20Huelva&amp;query_place_id=ChIJswLnGXjREQ0Rnb363KXfy8c"
+    target="_blank"
+    rel="noopener"
+>
+    Google Maps ↗
+</a>
+
+
+    
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+</main>
+
+<script>
+
+const search =
+    document.getElementById(
+        "search"
+    );
+
+const level =
+    document.getElementById(
+        "level"
+    );
+
+const sellable =
+    document.getElementById(
+        "sellable"
+    );
+
+const cards = [
+    ...document.querySelectorAll(
+        ".lead-card"
+    )
+];
+
+function applyFilters() {
+
+    const query =
+        search.value
+            .toLowerCase()
+            .trim();
+
+    const selectedLevel =
+        level.value;
+
+    const selectedSellable =
+        sellable.value;
+
+    cards.forEach(
+        (card) => {
+
+            const text =
+                card.dataset.search;
+
+            const cardLevel =
+                card.dataset.level;
+
+            const cardSellable =
+                card.dataset.sellable;
+
+            const matchesSearch =
+                !query ||
+                text.includes(query);
+
+            const matchesLevel =
+                !selectedLevel ||
+                cardLevel ===
+                    selectedLevel;
+
+            const matchesSellable =
+                !selectedSellable ||
+                cardSellable ===
+                    selectedSellable;
+
+            card.classList.toggle(
+                "hidden",
+                !(
+                    matchesSearch &&
+                    matchesLevel &&
+                    matchesSellable
+                )
+            );
+
+        }
+    );
+}
+
+search.addEventListener(
+    "input",
+    applyFilters
+);
+
+level.addEventListener(
+    "change",
+    applyFilters
+);
+
+sellable.addEventListener(
+    "change",
+    applyFilters
+);
+
+</script>
+
+</body>
+
+</html>
