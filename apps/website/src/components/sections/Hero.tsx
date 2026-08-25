@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/layout/Container"
 import { Section } from "@/components/layout/Section"
+import { Link } from "react-router-dom"
 
 export function Hero() {
     return (
@@ -65,7 +66,12 @@ export function Hero() {
                             Quiero mi web →
                         </Button>
 
-                        <Button size="lg" variant="outline" className="px-8">
+                        <Button
+                            render={<Link to="/ejemplos" />}
+                            size="lg"
+                            variant="outline"
+                            className="px-8"
+                        >
                             Ver ejemplos
                         </Button>
                     </div>

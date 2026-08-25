@@ -9,7 +9,7 @@ import {
     Stack,
     Text,
 } from "@warrior-code/ui"
-import { Footer } from "@/components/layout/Footer"
+import { Seo } from "@/components/seo/Seo"
 
 const examples = [
     {
@@ -39,6 +39,10 @@ export function Examples() {
         <Section id="ejemplos">
             <Container>
                 <Stack gap="xl">
+                    <Seo
+                        title="Ejemplos de páginas web | Warrior Code"
+                        description="Descubre ejemplos de páginas web profesionales adaptadas a restaurantes, academias y distintos tipos de negocio."
+                    />
                     <Link
                         to="/"
                         className="group inline-flex w-fit items-center gap-3 text-sm font-medium text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-primary/30"
@@ -57,7 +61,7 @@ export function Examples() {
                             Ejemplos
                         </p>
 
-                        <Heading as="h2" size="xl">
+                        <Heading as="h1" size="xl">
                             Cada negocio necesita una web diferente.
                         </Heading>
 
