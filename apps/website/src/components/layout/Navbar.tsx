@@ -109,13 +109,15 @@ export function Navbar() {
                         </div>
 
                         <div className="mt-4 flex flex-col gap-2">
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                className="w-full border-primary/30 text-primary hover:border-primary/50 hover:bg-primary/10"
-                            >
-                                Ver ejemplos
-                            </Button>
+                            <Link to="/ejemplos">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="w-full border-primary/30 text-primary hover:border-primary/50 hover:bg-primary/10"
+                                >
+                                    Ver ejemplos
+                                </Button>
+                            </Link>
                             <Button
                                 render={<a href="#contacto" />}
                                 size="sm"
