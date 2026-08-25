@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container"
 import { Button } from "@/components/ui/button"
 import warriorCodeLogo from "@/assets/warrior-code-logo.png"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const navigation = [
     { label: "Servicios", href: "#servicios" },
@@ -55,13 +56,15 @@ export function Navbar() {
                     </div>
 
                     <div className="hidden items-center gap-3 md:flex">
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            className="group border-primary/30 text-primary hover:border-primary/50 hover:bg-primary/10"
-                        >
-                            Ver ejemplos
-                        </Button>
+
+                        <Link to="/ejemplos">
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className="group border-primary/30 text-primary hover:border-primary/50 hover:bg-primary/10"
+                            >                                Ver ejemplos
+                            </Button>
+                        </Link>
                         <Button
                             render={<a href="#contacto" />}
                             size="sm"

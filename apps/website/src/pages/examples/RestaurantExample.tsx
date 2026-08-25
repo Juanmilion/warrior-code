@@ -7,6 +7,7 @@ import {
     Text,
     MenuCard,
 } from "@warrior-code/ui"
+import { ScrollToTop } from "@/components/layout/ScrollToTop"
 
 interface RestaurantExampleProps {
     heroImage: string
@@ -93,6 +94,8 @@ export function RestaurantExample({
 }: RestaurantExampleProps) {
     return (
         <main className="theme-restaurant min-h-screen bg-background text-foreground">
+            <ScrollToTop />
+
             {/* NAVBAR */}
             <header className="absolute inset-x-0 top-0 z-20">
                 <Container>

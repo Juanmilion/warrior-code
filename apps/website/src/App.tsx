@@ -6,20 +6,22 @@ import { PrivacyPolicy } from "@/pages/PrivacyPolicy"
 import { CookiePolicy } from "@/pages/CookiePolicy"
 import { RestaurantExample } from "./pages/examples/RestaurantExample"
 import restaurantHeroImage from "./assets/examples/restaurant/heroImage.jpg"
-
+import { Examples } from "./pages/examples/Examples"
 function App() {
     return (
         <BrowserRouter>
 
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="*" element={<Home />} />
                 <Route path="/aviso-legal" element={<LegalNotice />} />
                 <Route path="/privacidad" element={<PrivacyPolicy />} />
                 <Route path="/cookies" element={<CookiePolicy />} />
                 <Route
-                    path="/restaurante"
+                    path="/ejemplos/restaurante"
                     element={<RestaurantExample heroImage={restaurantHeroImage} />}
                 />
+                <Route path="/ejemplos" element={<Examples />} />
             </Routes>
         </BrowserRouter>
     )
