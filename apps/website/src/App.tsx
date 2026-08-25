@@ -7,6 +7,9 @@ import { CookiePolicy } from "@/pages/CookiePolicy"
 import { RestaurantExample } from "./pages/examples/RestaurantExample"
 import restaurantHeroImage from "./assets/examples/restaurant/heroImage.jpg"
 import { Examples } from "./pages/examples/Examples"
+import { WorkshopExample } from "./pages/examples/WorkshopExample"
+import workshopHeroImage from "./assets/examples/workshop/heroWorkshopImage.jpg"
+
 function App() {
     return (
         <BrowserRouter>
@@ -21,7 +24,9 @@ function App() {
                     path="/ejemplos/restaurante"
                     element={<RestaurantExample heroImage={restaurantHeroImage} />}
                 />
+                <Route path="/ejemplos/taller" element={<WorkshopExample heroImage={workshopHeroImage} />} />
                 <Route path="/ejemplos" element={<Examples />} />
+
             </Routes>
         </BrowserRouter>
     )

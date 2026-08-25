@@ -60,6 +60,37 @@
   --ring: #c8754f;
 }
 
+.theme-workshop {
+  --background: #101416;
+  --foreground: #edf0f1;
+
+  --card: #171d20;
+  --card-foreground: #edf0f1;
+
+  --popover: #171d20;
+  --popover-foreground: #edf0f1;
+
+  --primary: #f28a45;
+  --primary-foreground: #111416;
+
+  --secondary: #1b2327;
+  --secondary-foreground: #edf0f1;
+
+  --muted: #1b2327;
+  --muted-foreground: #a9b1b5;
+
+  --accent: #ffb454;
+  --accent-foreground: #111416;
+
+  --destructive: #dc4444;
+
+  --border: rgba(237, 240, 241, 0.12);
+  --input: rgba(237, 240, 241, 0.12);
+  --ring: #f28a45;
+
+  --radius: 0.625rem;
+}
+
 /*
  * Warrior Code Design System
  * Conecta nuestras variables CSS con las utilidades de Tailwind.

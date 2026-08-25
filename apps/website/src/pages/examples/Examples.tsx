@@ -23,11 +23,11 @@ const examples = [
         accentClassName: "text-[#c8754f]",
     },
     {
-        name: "Academia",
-        category: "Formación",
+        name: "Motor Huelva",
+        category: "Taller mecánico",
         description:
-            "Una propuesta digital pensada para academias y centros de formación.",
-        href: "/ejemplos/academia",
+            "Una propuesta digital pensada para talleres mecánicos y centros de servicio.",
+        href: "/ejemplos/taller",
         className:
             "bg-slate-950 text-white",
         accentClassName: "text-cyan-400",

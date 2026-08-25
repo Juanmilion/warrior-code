@@ -22,6 +22,12 @@ export type { CardProps } from "./cards/Card"
 export { MenuCard } from "./business/restaurant/MenuCard"
 export type { MenuCardProps } from "./business/restaurant/MenuCard"
 
+export { SectionIntro } from "./business/SectionIntro"
+export type { SectionIntroProps } from "./business/SectionIntro"
+
+export { InfoPill } from "./business/InfoPill"
+export type { InfoPillProps } from "./business/InfoPill"
+
 export type { MenuItem } from "./business/restaurant/types"
 
 export { ServiceCard } from "./business/ServiceCard"
