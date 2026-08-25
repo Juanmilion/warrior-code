@@ -28,6 +28,12 @@ export type { SectionIntroProps } from "./business/SectionIntro"
 export { InfoPill } from "./business/InfoPill"
 export type { InfoPillProps } from "./business/InfoPill"
 
+export { StatsGrid } from "./business/StatsGrid"
+export type { StatItem } from "./business/StatsGrid"
+
+export { ProcessSteps } from "./business/ProcessSteps"
+export type { ProcessStep } from "./business/ProcessSteps"
+
 export type { MenuItem } from "./business/restaurant/types"
 
 export { ServiceCard } from "./business/ServiceCard"

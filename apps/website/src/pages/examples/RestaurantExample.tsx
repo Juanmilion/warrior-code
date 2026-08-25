@@ -4,6 +4,7 @@ import {
     Heading,
     Section,
     Stack,
+    StatsGrid,
     Text,
     MenuCard,
 } from "@warrior-code/ui"
@@ -87,6 +88,21 @@ const services = [
         title: "Un lugar para quedarse",
         description:
             "Un espacio pensado para comer bien, conversar y disfrutar sin prisas.",
+    },
+]
+
+const restaurantStats = [
+    {
+        value: `${menu.reduce((total, section) => total + section.items.length, 0)}`,
+        label: "platos fuera de carta",
+    },
+    {
+        value: "4",
+        label: "postres especiales",
+    },
+    {
+        value: "3",
+        label: "locales en la ciudad",
     },
 ]
 
@@ -320,6 +336,15 @@ export function RestaurantExample({
                     </Stack>
                 </Container>
             </Section>
+
+            <section className="border-y border-border bg-card">
+                <Container>
+                    <StatsGrid
+                        items={restaurantStats}
+                        className="[&>div]:px-4 sm:[&>div]:px-6"
+                    />
+                </Container>
+            </section>
 
             {/* CTA VISUAL */}
             <section

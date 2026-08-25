@@ -3,11 +3,12 @@ import {
     Container,
     Grid,
     Heading,
+    ProcessSteps,
     Section,
     ServiceCard,
+    StatsGrid,
     Stack,
     Text,
-    InfoPill,
     SectionIntro,
 } from "@warrior-code/ui"
 import { ScrollToTop } from "../../components/layout/ScrollToTop"
@@ -239,22 +240,7 @@ export function WorkshopExample({
 
             <section className="border-y border-border bg-secondary">
                 <Container>
-                    <div className="grid divide-y divide-border sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-                        {trustPoints.map((point) => (
-                            <div
-                                key={point.label}
-                                className="px-6 py-10 text-center sm:py-12"
-                            >
-                                <p className="text-3xl font-black tracking-tight text-primary">
-                                    {point.value}
-                                </p>
-
-                                <p className="mt-2 text-sm font-medium text-muted-foreground">
-                                    {point.label}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
+                    <StatsGrid items={trustPoints} />
                 </Container>
             </section>
 
@@ -271,28 +257,10 @@ export function WorkshopExample({
                             </Heading>
                         </div>
 
-                        <Grid columns={3} gap="lg">
-                            {process.map((step) => (
-                                <div
-                                    key={step.number}
-                                    className="rounded-[1.5rem] border border-border bg-card p-6"
-                                >
-                                    <Stack gap="md">
-                                        <span className="text-sm font-black tracking-[0.15em] text-primary">
-                                            {step.number}
-                                        </span>
-
-                                        <Heading as="h3" size="md">
-                                            {step.title}
-                                        </Heading>
-
-                                        <Text muted>
-                                            {step.description}
-                                        </Text>
-                                    </Stack>
-                                </div>
-                            ))}
-                        </Grid>
+                        <ProcessSteps
+                            items={process}
+                            itemClassName="rounded-[1.5rem]"
+                        />
                     </Stack>
                 </Container>
             </Section>
@@ -393,7 +361,7 @@ export function WorkshopExample({
                 </Container>
             </Section>
 
-            <footer className="border-t border-border bg-[#101213] py-8">
+            <footer className="border-t border-border bg-secondary py-8">
                 <Container>
                     <div className="flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
                         <p>© 2026 Motor Huelva</p>
