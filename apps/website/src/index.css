@@ -31,6 +31,35 @@
   --radius: 0.875rem;
 }
 
+.theme-restaurant {
+  --background: #1c1713;
+  --foreground: #f5eee4;
+
+  --card: #292019;
+  --card-foreground: #f5eee4;
+
+  --popover: #292019;
+  --popover-foreground: #f5eee4;
+
+  --primary: #c8754f;
+  --primary-foreground: #ffffff;
+
+  --secondary: #352b24;
+  --secondary-foreground: #f5eee4;
+
+  --muted: #292019;
+  --muted-foreground: #c8b9a8;
+
+  --accent: #a65d3d;
+  --accent-foreground: #ffffff;
+
+  --destructive: #c94a4a;
+
+  --border: rgba(245, 238, 228, 0.12);
+  --input: rgba(245, 238, 228, 0.14);
+  --ring: #c8754f;
+}
+
 /*
  * Warrior Code Design System
  * Conecta nuestras variables CSS con las utilidades de Tailwind.
