@@ -6,6 +6,8 @@ import {
     Stack,
     StatsGrid,
     Text,
+    ImageHero,
+    CallToAction,
     MenuCard,
 } from "@warrior-code/ui"
 import { ScrollToTop } from "@/components/layout/ScrollToTop"
@@ -161,61 +163,24 @@ export function RestaurantExample({
                 </Container>
             </header>
 
-            {/* HERO */}
-            <section className="relative isolate flex min-h-[720px] items-end overflow-hidden">
-                <div
-                    className="absolute inset-[-16px] -z-20 scale-105 bg-cover bg-center blur-[3px]"
-                    style={{
-                        backgroundImage: `url(${heroImage})`,
-                    }}
-                />
-
-                <div className="absolute inset-0 -z-10 bg-background/45" />
-
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background/70 via-background/20 to-background/30" />
-
-                <Container className="pb-24 pt-40">
-                    <div className="max-w-3xl text-primary-foreground">
-                        <p className="mb-5 text-sm font-medium uppercase tracking-[0.28em] text-primary-foreground/70">
-                            Cocina mediterránea
-                        </p>
-
-                        <Heading
-                            as="h1"
-                            size="hero"
-                            className="max-w-3xl text-primary-foreground"
-                        >
-                            Sabores que merecen quedarse.
-                        </Heading>
-
-                        <Text
-                            size="lg"
-                            className="mt-6 max-w-xl text-primary-foreground/80"
-                        >
-                            Producto de temporada, cocina honesta y un espacio
-                            pensado para disfrutar de cada momento alrededor de
-                            la mesa.
-                        </Text>
-
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            <a
-                                href="#reserva"
-                                className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-accent"
-                            >
-                                Reservar mesa
-                            </a>
-
-                            <a
-                                href="#carta"
-                                className="rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-6 py-3 text-sm font-medium text-primary-foreground backdrop-blur-sm transition-colors hover:bg-primary-foreground/20"
-                            >
-                                Ver carta
-                            </a>
-                        </div>
-                    </div>
-                </Container>
-            </section>
-
+            <ImageHero
+                image={heroImage}
+                eyebrow="Cocina mediterránea"
+                tone="light"
+                title="Sabores que merecen quedarse."
+                description="Producto de temporada, cocina honesta y un espacio pensado para disfrutar de cada momento alrededor de la mesa."
+                actions={[
+                    {
+                        label: "Reservar mesa",
+                        href: "#reserva",
+                    },
+                    {
+                        label: "Ver carta",
+                        href: "#carta",
+                        variant: "secondary",
+                    },
+                ]}
+            />
             {/* HISTORIA */}
             <Section id="historia">
                 <Container>
@@ -345,46 +310,18 @@ export function RestaurantExample({
                     />
                 </Container>
             </section>
-
-            {/* CTA VISUAL */}
-            <section
+            <CallToAction
                 id="reserva"
-                className="relative overflow-hidden bg-secondary py-28 text-primary-foreground"
-            >
-                <Container>
-                    <div className="mx-auto max-w-3xl text-center">
-                        <p className="mb-5 text-sm font-medium uppercase tracking-[0.25em] text-primary">
-                            Tu mesa te espera
-                        </p>
-
-                        <Heading
-                            as="h2"
-                            size="xl"
-                            align="center"
-                            className="text-primary-foreground"
-                        >
-                            Una buena comida empieza mucho antes del primer
-                            bocado.
-                        </Heading>
-
-                        <Text
-                            size="lg"
-                            align="center"
-                            className="mx-auto mt-6 max-w-2xl text-primary-foreground/70"
-                        >
-                            Reserva tu mesa y ven a disfrutar de nuestra cocina
-                            con calma.
-                        </Text>
-
-                        <a
-                            href="#contacto"
-                            className="mt-8 inline-flex rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-accent"
-                        >
-                            Reservar mesa
-                        </a>
-                    </div>
-                </Container>
-            </section>
+                variant="primary"
+                eyebrow="Tu mesa te espera"
+                title="Una buena comida empieza mucho antes del primer bocado."
+                description="Reserva tu mesa y ven a disfrutar de nuestra cocina con calma."
+                center={true}
+                action={{
+                    label: "Reservar mesa",
+                    href: "#contacto",
+                }}
+            />
 
             {/* HORARIOS + CONTACTO */}
             <Section id="contacto">

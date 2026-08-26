@@ -34,10 +34,11 @@ export function Text({
 }: TextProps) {
     return (
         <Component
-            className={`${muted ? "text-muted-foreground" : "text-foreground"
+            className={`${muted ? "text-muted-foreground" : ""
                 } ${sizeClasses[size]} ${alignClasses[align]} ${className}`}
         >
             {children}
         </Component>
     )
+
 }

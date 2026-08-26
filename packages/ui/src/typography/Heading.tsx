@@ -2,7 +2,10 @@ import type { ElementType, ReactNode } from "react"
 
 export interface HeadingProps {
     children: ReactNode
-    as?: Extract<ElementType, "h1" | "h2" | "h3" | "h4" | "h5" | "h6">
+    as?: Extract<
+        ElementType,
+        "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+    >
     size?: "sm" | "md" | "lg" | "xl" | "hero"
     align?: "left" | "center" | "right"
     className?: string
@@ -30,10 +33,10 @@ export function Heading({
     className = "",
 }: HeadingProps) {
     return (
-        <Component
-            className={`text-foreground ${sizeClasses[size]} ${alignClasses[align]} ${className}`}
-        >
-            {children}
-        </Component>
-    )
+    <Component
+        className={`${sizeClasses[size]} ${alignClasses[align]} ${className}`}
+    >
+        {children}
+    </Component>
+)
 }

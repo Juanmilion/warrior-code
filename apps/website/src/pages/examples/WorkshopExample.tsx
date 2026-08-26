@@ -10,6 +10,8 @@ import {
     Stack,
     Text,
     SectionIntro,
+    ImageHero,
+    CallToAction
 } from "@warrior-code/ui"
 import { ScrollToTop } from "../../components/layout/ScrollToTop"
 import { Seo } from "../../components/seo/Seo"
@@ -87,6 +89,7 @@ export function WorkshopExample({
                 title="Motor Huelva | Ejemplo de web para taller"
                 description="Ejemplo de una página web para taller mecánico, con servicios, proceso de trabajo y contacto."
             />
+
             <header className="absolute inset-x-0 top-0 z-20">
                 <Container>
                     <nav className="mt-4 flex h-20 items-center justify-between rounded-full border border-white/10 bg-[#101416]/35 px-5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.18)] md:px-7">
@@ -96,7 +99,6 @@ export function WorkshopExample({
                         >
                             Motor<span className="text-primary">Huelva</span>
                         </a>
-
 
                         <div className="hidden items-center gap-8 text-sm font-medium text-white/75 md:flex">
                             <a
@@ -131,89 +133,31 @@ export function WorkshopExample({
                 </Container>
             </header>
 
-            <section className="relative isolate flex min-h-[720px] items-center overflow-hidden">
-                <div
-                    className="absolute inset-[-12px] -z-20 scale-105 bg-cover bg-center blur-[2px]"
-                    style={{
-                        backgroundImage: `url(${heroImage})`,
-                    }}
-                />
-
-
-                <div className="absolute inset-0 -z-10 bg-black/60" />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/60 to-black/25" />
-
-                <Container className="pt-24">
-                    <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-                        <div className="max-w-3xl">
-                            <div className="mb-6 flex items-center gap-3">
-                                <span className="h-px w-10 bg-primary" />
-
-                                <p className="text-sm font-bold uppercase tracking-[0.2em] text-primary">
-                                    Taller mecánico · Huelva
-                                </p>
-                            </div>
-
-                            <Heading
-                                as="h1"
-                                size="hero"
-                                className="max-w-3xl text-white"
-                            >
-                                Tu vehículo.
-                                <br />
-                                En buenas manos.
-                            </Heading>
-
-                            <Text
-                                size="lg"
-                                className="mt-6 max-w-xl text-white/75"
-                            >
-                                Mantenimiento, diagnosis y reparación con
-                                profesionales que te explican lo que necesita tu
-                                vehículo antes de empezar.
-                            </Text>
-
-                            <div className="mt-9 flex flex-wrap gap-3">
-                                <a
-                                    href="#presupuesto"
-                                    className="rounded-full bg-primary px-6 py-3.5 text-sm font-bold text-primary-foreground transition-all hover:brightness-110"
-                                >
-                                    Pedir presupuesto
-                                </a>
-
-                                <a
-                                    href="tel:+34959000000"
-                                    className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-                                >
-                                    Llamar ahora
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="rounded-[1.75rem] border border-white/10 bg-[#101416]/55 p-5 backdrop-blur-md">
-                            <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary">
-                                Servicio rápido
-                            </p>
-
-
-                            <div className="mt-5 space-y-4 text-sm text-white/75">
-                                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                                    <span>Diagnóstico</span>
-                                    <span className="font-semibold text-white">Sin compromiso</span>
-                                </div>
-                                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                                    <span>Garantía</span>
-                                    <span className="font-semibold text-white">12 meses</span>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <span>Atención</span>
-                                    <span className="font-semibold text-white">Lunes a sábado</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Container>
-            </section>
+            <ImageHero
+                image={heroImage}
+                eyebrow="Taller mecánico · Huelva"
+                tone="light"
+                title={
+                    <>
+                        Tu vehículo.
+                        <br />
+                        En buenas manos.
+                    </>
+                }
+                description="Mantenimiento, diagnosis y reparación con profesionales que te explican lo que necesita tu vehículo antes de empezar."
+                actions={[
+                    {
+                        label: "Pedir presupuesto",
+                        href: "#presupuesto",
+                        variant: "primary",
+                    },
+                    {
+                        label: "Llamar ahora",
+                        href: "tel:+34959000000",
+                        variant: "secondary",
+                    },
+                ]}
+            />
 
             <Section id="servicios">
                 <Container>
@@ -265,7 +209,7 @@ export function WorkshopExample({
                 </Container>
             </Section>
 
-            <section
+            {/* <section
                 id="presupuesto"
                 className="bg-primary py-20 text-primary-foreground"
             >
@@ -298,8 +242,18 @@ export function WorkshopExample({
                         </a>
                     </div>
                 </Container>
-            </section>
-
+            </section> */}
+            <CallToAction
+                id="presupuesto"
+                eyebrow="¿Necesitas una revisión?"
+                title="Cuéntanos qué le pasa a tu vehículo."
+                description="Te explicaremos qué necesita y prepararemos un presupuesto antes de empezar."
+                variant="primary"
+                action={{
+                    label: "Pedir presupuesto",
+                    href: "#contacto",
+                }}
+            />
             <Section id="contacto">
                 <Container>
                     <Grid columns={2} gap="lg">
