@@ -8,7 +8,7 @@ import {
     Text,
     MenuCard,
 } from "@warrior-code/ui"
-import { ScrollToTop } from "@/components/layout/ScrollToTop"
+// import { ScrollToTop } from "@/components/layout/ScrollToTop"
 import { Seo } from "@/components/seo/Seo"
 
 interface RestaurantExampleProps {
@@ -111,7 +111,7 @@ export function RestaurantExample({
 }: RestaurantExampleProps) {
     return (
         <main className="theme-restaurant min-h-screen bg-background text-foreground">
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
             <Seo
                 title="Casa Olivo | Ejemplo de web para restaurante"
                 description="Ejemplo de una página web gastronómica para Casa Olivo, con carta, propuesta culinaria, horarios y reservas."
