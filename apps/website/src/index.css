@@ -135,6 +135,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -260,4 +261,19 @@ body {
 /* Stagger effect for child elements */
 .scroll-reveal-stagger>* {
   animation-delay: calc(0.1s * var(--reveal-index, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

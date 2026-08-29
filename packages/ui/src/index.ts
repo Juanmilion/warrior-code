@@ -38,3 +38,10 @@ export type { MenuItem } from "./business/restaurant/types"
 
 export { ServiceCard } from "./business/ServiceCard"
 export type { ServiceCardProps } from "./business/ServiceCard"
+
+export * from "./sections/StorySection"
+export * from "./sections/ServicesSection"
+export * from "./sections/StatsSection"
+export * from "./sections/MenuSection"
+export { ImageHero } from "./sections/ImageHero"
+export type { ImageHeroProps } from "./sections/ImageHero"

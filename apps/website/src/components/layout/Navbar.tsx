@@ -24,9 +24,9 @@ export function Navbar() {
             <Container>
                 <nav className="flex h-20 items-center justify-between">
                     <a
-                        href="#"
+                        href="#inicio"
                         aria-label="Warrior Code"
-                        className="group flex items-center gap-3 transition-all duration-300 hover:scale-105"
+                        className="group flex items-center gap-3 rounded-lg outline-none transition-all duration-300 hover:scale-105 focus-visible:ring-2 focus-visible:ring-primary/60"
                     >
                         <div className="relative">
                             <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 opacity-0 blur transition-opacity duration-300 group-hover:opacity-100" />
@@ -47,7 +47,7 @@ export function Navbar() {
                             <a
                                 key={item.href}
                                 href={item.href}
-                                className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                                className="group relative text-sm font-medium text-muted-foreground outline-none transition-colors hover:text-primary focus-visible:text-primary focus-visible:ring-2 focus-visible:ring-primary/50"
                             >
                                 {item.label}
                                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-primary/50 transition-all duration-300 group-hover:w-full" />
@@ -76,7 +76,9 @@ export function Navbar() {
 
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="group relative md:hidden"
+                        className="group relative flex size-11 items-center justify-center rounded-lg outline-none md:hidden focus-visible:ring-2 focus-visible:ring-primary/60"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-navigation"
                         aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
                     >
                         <div className="relative h-6 w-6">
@@ -94,14 +96,14 @@ export function Navbar() {
                 </nav>
 
                 {isMenuOpen && (
-                    <div className="border-t border-primary/10 bg-background/95 pb-4 pt-3 md:hidden">
+                    <div id="mobile-navigation" className="border-t border-primary/10 bg-background/95 pb-4 pt-3 md:hidden">
                         <div className="flex flex-col space-y-2">
                             {navigation.map((item) => (
                                 <a
                                     key={item.href}
                                     href={item.href}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className="rounded-xl px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-primary/5 hover:text-foreground"
+                                    className="rounded-xl px-3 py-3 text-sm font-medium text-muted-foreground outline-none transition-colors hover:bg-primary/5 hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary/60"
                                 >
                                     {item.label}
                                 </a>

@@ -1,7 +1,7 @@
-const { execSync } = require("node:child_process");
-const readline = require("node:readline");
+import { execSync } from "node:child_process";
+import { createInterface } from "node:readline";
 
-const rl = readline.createInterface({
+const rl = createInterface({
     input: process.stdin,
     output: process.stdout,
 });

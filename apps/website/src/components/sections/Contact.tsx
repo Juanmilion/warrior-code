@@ -423,7 +423,7 @@ export function Contact() {
                             </div>
 
                             {submitError && (
-                                <p className="mt-4 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
+                                <p role="alert" className="mt-4 rounded-xl border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
                                     {submitError}
                                 </p>
                             )}

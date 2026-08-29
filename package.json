@@ -1,6 +1,7 @@
 {
   "name": "warrior-code",
   "private": true,
+  "type": "module",
   "workspaces": [
     "apps/*",
     "packages/*"

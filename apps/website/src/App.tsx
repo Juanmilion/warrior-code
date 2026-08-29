@@ -9,6 +9,7 @@ import restaurantHeroImage from "./assets/examples/restaurant/heroImage.jpg"
 import { Examples } from "./pages/examples/Examples"
 import { WorkshopExample } from "./pages/examples/WorkshopExample"
 import workshopHeroImage from "./assets/examples/workshop/heroWorkshopImage.jpg"
+import { CafeNorteDemo } from "@/demos/restaurante/cafe-norte/demo"
 
 function App() {
     return (
@@ -26,7 +27,7 @@ function App() {
                 />
                 <Route path="/ejemplos/taller" element={<WorkshopExample heroImage={workshopHeroImage} />} />
                 <Route path="/ejemplos" element={<Examples />} />
-
+                <Route path="/demos/cafe-norte" element={<CafeNorteDemo />} />
             </Routes>
         </BrowserRouter>
     )

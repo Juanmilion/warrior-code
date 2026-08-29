@@ -8,6 +8,8 @@ export interface SectionProps {
     id?: string
     className?: string
     contentClassName?: string
+    headerClassName?: string
+    eyebrowClassName?: string
     align?: "left" | "center"
 }
 
@@ -19,6 +21,8 @@ export function Section({
     id,
     className = "",
     contentClassName = "",
+    headerClassName = "",
+    eyebrowClassName = "",
     align = "left",
 }: SectionProps) {
     const isCentered = align === "center"
@@ -33,17 +37,16 @@ export function Section({
             >
                 {(eyebrow || title || description) && (
                     <header
-                        className={`mb-12 max-w-2xl ${isCentered ? "mx-auto text-center" : ""
-                            }`}
+                        className={`mb-12 max-w-2xl ${isCentered ? "mx-auto text-center" : ""} ${headerClassName}`}
                     >
                         {eyebrow && (
-                            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary">
+                            <p className={`mb-3 text-sm font-medium uppercase tracking-[0.2em] text-primary ${eyebrowClassName}`}>
                                 {eyebrow}
                             </p>
                         )}
 
                         {title && (
-                            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                            <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                                 {title}
                             </h2>
                         )}

@@ -15,7 +15,7 @@ export function Footer() {
                 <div className="grid gap-10 md:grid-cols-[1.1fr_auto] md:items-start">
                     <div className="max-w-sm">
                         <a
-                            href="#"
+                            href="#inicio"
                             className="inline-flex items-center gap-3 text-sm font-bold tracking-[0.2em] text-foreground transition-colors hover:text-primary"
                         >
                             <span className="inline-block size-2 rounded-full bg-primary" />
@@ -33,7 +33,7 @@ export function Footer() {
                             <a
                                 key={item.href}
                                 href={item.href}
-                                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                                className="text-sm text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-primary/60"
                             >
                                 {item.label}
                             </a>

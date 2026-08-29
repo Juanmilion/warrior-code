@@ -14,16 +14,19 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
     } = options
 
     const ref = useRef<HTMLElement>(null)
-    const hasTriggered = useRef(false)
 
     useEffect(() => {
+        const element = ref.current
+
+        if (!element) {
+            return
+        }
+
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("scroll-reveal-active")
-                if (triggerOnce && hasTriggered.current) {
+                if (triggerOnce) {
                     observer.unobserve(entry.target)
-                } else {
-                    hasTriggered.current = true
                 }
             } else if (!triggerOnce) {
                 entry.target.classList.remove("scroll-reveal-active")
@@ -33,14 +36,10 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
             rootMargin,
         })
 
-        if (ref.current) {
-            observer.observe(ref.current)
-        }
+        observer.observe(element)
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current)
-            }
+            observer.unobserve(element)
         }
     }, [threshold, rootMargin, triggerOnce])
 

@@ -7,12 +7,14 @@ import { Heading } from "../../typography/Heading"
 export interface MenuCardProps {
     item: MenuItem
     variant?: "card" | "list"
+    imageAspect?: "standard" | "wide"
     className?: string
 }
 
 export function MenuCard({
     item,
     variant = "card",
+    imageAspect = "standard",
     className = "",
 }: MenuCardProps) {
     if (variant === "list") {
@@ -57,7 +59,11 @@ export function MenuCard({
             className={`overflow-hidden ${className}`}
         >
             {item.image && (
-                <div className="aspect-[4/3] overflow-hidden">
+                <div
+                    className={`${
+                        imageAspect === "wide" ? "aspect-[16/9]" : "aspect-[4/3]"
+                    } overflow-hidden`}
+                >
                     <img
                         src={item.image}
                         alt={item.name}

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "..",
+    "jsx": "react-jsx",
+    "ignoreDeprecations": "6.0",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "paths": {
+      "@warrior-code/ui": ["packages/ui/src/index.ts"]
+    },
+    "strict": true,
+    "target": "ES2022"
+  },
+  "include": ["./**/*.ts", "./**/*.tsx", "../packages/ui/src/**/*.ts", "../packages/ui/src/**/*.tsx"]
+}

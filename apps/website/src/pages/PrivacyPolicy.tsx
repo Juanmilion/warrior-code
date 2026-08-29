@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 import { Container } from "@/components/layout/Container"
 import { ScrollToTop } from "@/components/layout/ScrollToTop"
+import { Seo } from "@/components/seo/Seo"
 
 export function PrivacyPolicy() {
     const nif = "**********" // Replace with the actual NIF value
@@ -10,6 +11,10 @@ export function PrivacyPolicy() {
     return (
         <main className="min-h-screen bg-background text-foreground">
             <ScrollToTop />
+            <Seo
+                title="Política de privacidad | Warrior Code"
+                description="Información sobre el tratamiento de datos personales en Warrior Code."
+            />
             <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(168,85,247,0.06),transparent_28%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.05),transparent_30%)]" />
 
             <Container>
