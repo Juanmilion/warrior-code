@@ -23,18 +23,55 @@ export function ImageHero({
     eyebrow,
     actions,
     className = "",
-    overlayClassName = "bg-background/65",
+    overlayClassName = "bg-black/45",
 }: ImageHeroProps) {
     return (
-        <section className={`relative isolate flex min-h-[640px] items-end overflow-hidden ${className}`}>
-            <img src={imageSrc} alt={imageAlt} className="absolute inset-0 -z-20 h-full w-full object-cover" />
-            <div className={`absolute inset-0 -z-10 ${overlayClassName}`} />
-            <Container className="pb-20 pt-36 sm:pb-24">
-                <div className="max-w-3xl text-primary-foreground">
-                    {eyebrow && <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-primary">{eyebrow}</p>}
-                    <Heading as="h1" size="hero" className="text-primary-foreground">{title}</Heading>
-                    <Text size="lg" className="mt-6 max-w-2xl text-primary-foreground/80">{description}</Text>
-                    {actions && <div className="mt-9 flex flex-wrap gap-3">{actions}</div>}
+        <section
+            className={`relative isolate flex min-h-[720px] items-center overflow-hidden ${className}`}
+        >
+            {/* Background image */}
+            <div className="absolute inset-0 -z-20 overflow-hidden">
+                <img
+                    src={imageSrc}
+                    alt={imageAlt}
+                    className="h-full w-full scale-105 object-cover blur-[2px] brightness-[0.6]"
+                />
+            </div>
+
+            {/* Dark overlay */}
+            <div
+                className={`absolute inset-0 -z-10 ${overlayClassName}`}
+            />
+
+            {/* Hero content */}
+            <Container className="pt-28 pb-20 sm:pt-32 sm:pb-24">
+                <div className="max-w-3xl">
+                    {eyebrow && (
+                        <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-primary">
+                            {eyebrow}
+                        </p>
+                    )}
+
+                    <Heading
+                        as="h1"
+                        size="hero"
+                        className="max-w-3xl text-white"
+                    >
+                        {title}
+                    </Heading>
+
+                    <Text
+                        size="lg"
+                        className="mt-6 max-w-2xl text-white/80"
+                    >
+                        {description}
+                    </Text>
+
+                    {actions && (
+                        <div className="mt-9 flex flex-wrap gap-3">
+                            {actions}
+                        </div>
+                    )}
                 </div>
             </Container>
         </section>
