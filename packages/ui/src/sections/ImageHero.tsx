@@ -34,7 +34,7 @@ export function ImageHero({
                 <img
                     src={imageSrc}
                     alt={imageAlt}
-                    className="h-full w-full scale-105 object-cover blur-[2px] brightness-[0.6]"
+                    className="h-full w-full scale-105 object-cover blur-[3px] brightness-[0.35]"
                 />
             </div>
 
