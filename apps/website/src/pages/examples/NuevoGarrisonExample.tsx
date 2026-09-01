@@ -21,6 +21,7 @@ export function NuevoGarrisonExample() {
                     description:
                         "Doble smash burger, cheddar madurado, bacon crujiente, cebolla caramelizada y salsa de la casa.",
                     price: "13,90 €",
+                    image: "https://scontent.fsvq4-2.fna.fbcdn.net/v/t39.30808-6/784005628_1090058213964569_7431150031909116195_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=4mVQeqRnyjkQ7kNvwH4KR8G&_nc_oc=Adq6-li14yY67gGistru8-VFw830-igrpRidtd0UF94RtpZHhdpbwK08K1W-Vf_Bgus&_nc_zt=23&_nc_ht=scontent.fsvq4-2.fna&_nc_gid=HNmDXGZDFSwpo4Gu0Nb_5g&_nc_ss=7b289&oh=00_AQJaElhujjDbW21owdp_jamL1wJmX8_sSc7BJqXFdqJIMQ&oe=6A9CE516"
                 },
                 {
                     name: "The Garrison",
@@ -28,30 +29,35 @@ export function NuevoGarrisonExample() {
                         "Carne de vaca, cheddar, pepinillo, cebolla a la plancha, mostaza y nuestra salsa Garrison.",
                     price: "12,90 €",
                     featured: true,
+                    image: "https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/778872066_1090058230631234_2700646561392644483_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=SkiW-MI8zmwQ7kNvwH-aaYj&_nc_oc=AdpU08nHMR7_353L4CnVMk6lLNdAU4-sSxAC4B8P1g0DebF64gYydgIdKaihFuDYvVE&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=UIxJN7LWz028oEJdHS1isw&_nc_ss=7b289&oh=00_AQIzJeWF952N38w_g0LKo7JuVzR-inmRGxqNsSG-yEzArw&oe=6A9CDBBA"
                 },
                 {
                     name: "Arthur's",
                     description:
                         "Doble carne, doble cheddar, bacon, cebolla crujiente y salsa bourbon.",
                     price: "14,50 €",
+                    image: "https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/753343855_1064810053156052_8721090631375836324_n.jpg?stp=dst-jpg_tt6&cstp=mx1023x1278&ctp=s1023x1278&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dDPuBN5lx-4Q7kNvwFssWhr&_nc_oc=AdrnyWVjgtKtZTFud4XnYLARt8o2UUZOEa2ZfqUOduKbqMyZlVUhguV7bUGG_gP31F0&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=g4b6fJF5QAJWIBA7sD5mvw&_nc_ss=7b289&oh=00_AQJYB-xCb9rA2ZksqOFEarmXTU8WGQ0MTTqt26wZ-pzU3A&oe=6A9CF853"
                 },
                 {
                     name: "The Tommy",
                     description:
                         "Smash burger, provolone, bacon, cebolla caramelizada y salsa ahumada.",
                     price: "13,50 €",
+                    image: "https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/747526844_1055985637371827_637776039846351366_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=T8SfITrVYjoQ7kNvwH8qGF1&_nc_oc=AdpQJjFBl3MaU2JRQdXT4bMBM6fJyVqHWDkCpJRvMFSoC5Xwta6dzJBRct_BsriPgso&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=m7coV6kXytMuzk4NuPIjIQ&_nc_ss=7b289&oh=00_AQL1FyVxWt5Ozm5otcYbcc_DDO92_Oib3OON6113TTdFXA&oe=6A9D01E0"
                 },
                 {
                     name: "Polly",
                     description:
                         "Pollo crujiente, cheddar, lechuga, pepinillo y mayonesa de la casa.",
                     price: "12,90 €",
+                    image: "https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/747450451_1055985660705158_8529200909227525913_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1365&ctp=s2048x1365&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=nh9FPZqcPiYQ7kNvwExyA9q&_nc_oc=Adqn6p1oyvW589PaoGKlMiCptSgpj96UKewyFmr-NOLyar8XSdu2wh-vDFxppN-9s_M&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=ZBjL35fo-2AdgxktDrGb_w&_nc_ss=7b289&oh=00_AQKz5pbRQTHu_m-y8chFRNii4iugnbZeAceKNLH5-9X3zg&oe=6A9CFC67"
                 },
                 {
                     name: "John",
                     description:
                         "Doble smash, cheddar, bacon y salsa barbacoa ahumada.",
                     price: "13,90 €",
+                    image: "https://scontent.fsvq4-1.fna.fbcdn.net/v/t39.30808-6/711765487_1016496491320742_4103536936452418378_n.jpg?stp=dst-jpg_tt6&cstp=mx1365x1706&ctp=s1365x1706&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ZKryQtrdq30Q7kNvwGfs-iZ&_nc_oc=AdrZ2cCG4w_zORa-v_jJXzJjrbnlufxng-wHFrjjsIHsUYjgYeskBfFykp45l5ZlSkU&_nc_zt=23&_nc_ht=scontent.fsvq4-1.fna&_nc_gid=HUumL0qM10TnPH56mNw-Bw&_nc_ss=7b289&oh=00_AQKBVUzoE54D5MheH5_RcsP1v2F02GpxWHNUmVfRHeDMMA&oe=6A9CF376"
                 },
             ],
         },
@@ -410,60 +416,84 @@ export function NuevoGarrisonExample() {
             </section>
 
             {/* CONTACTO */}
-
             <section
                 id="contacto"
-                className="bg-secondary py-24 sm:py-32"
+                className="overflow-hidden bg-secondary py-20 sm:py-28 lg:py-32"
             >
                 <Container>
-                    <Card className="mx-auto max-w-4xl border-border bg-background p-0 shadow-none">
-                        <div className="grid md:grid-cols-2">
+                    <Card className="mx-auto w-full max-w-4xl overflow-hidden border-border bg-background p-0 shadow-none">
+                        <div className="grid min-w-0 lg:grid-cols-2">
 
-                            <div className="border-b border-border p-8 sm:p-12 md:border-b-0 md:border-r">
-                                <p className="mb-5 text-xs font-bold uppercase tracking-[0.35em] text-primary">
+                            {/* UBICACIÓN */}
+                            <div className="min-w-0 border-b border-border p-6 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+                                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-primary sm:text-xs sm:tracking-[0.35em]">
                                     Find us
                                 </p>
 
-                                <h2 className="font-serif text-4xl font-bold uppercase">
+                                <h2 className="font-serif text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl">
                                     Ven a vernos.
                                 </h2>
 
-                                <div className="my-7 h-px w-12 bg-primary" />
+                                <div className="my-6 h-px w-10 bg-primary sm:my-7 sm:w-12" />
 
                                 <Text muted>
                                     <span className="block">
                                         Huelva, Andalucía
                                     </span>
 
-                                    <span className="mt-1 block">
-                                        {contact?.address?.join(" · ") ??
-                                            "Huelva"}
+                                    <span className="mt-2 block break-words leading-6">
+                                        {contact?.address?.join(" · ") ?? "Huelva"}
                                     </span>
                                 </Text>
+
+                                {/* MAPA */}
+                                <div className="mt-8 overflow-hidden border border-white/10 bg-black p-1 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+                                    <div className="relative overflow-hidden">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7336.755595792104!2d-6.933906534354224!3d37.268698058540366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd11cfe2f28a2bff%3A0xb511370c3a8d966f!2sNuevo%20Garrisons%20burger!5e0!3m2!1sen!2ses!4v1788285732913!5m2!1sen!2ses"
+                                            className="block h-[260px] w-full border-0 grayscale contrast-125 sm:h-[300px]"
+                                            allowFullScreen
+                                            loading="lazy"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            title="Ubicación de Nuevo Garrison Burger"
+                                        />
+
+                                        {/* Toque visual */}
+                                        <div className="pointer-events-none absolute inset-0 border border-primary/10" />
+                                    </div>
+                                </div>
+
+                                <div className="mt-3 flex items-center justify-between">
+                                    <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-white/25">
+                                        Nuevo Garrison Burger
+                                    </span>
+
+                                    <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-primary/60">
+                                        Huelva
+                                    </span>
+                                </div>
                             </div>
 
-                            <div className="p-8 sm:p-12">
+                            {/* CONTACTO */}
+                            <div className="min-w-0 p-6 sm:p-10 lg:p-12">
                                 <Stack gap="md">
                                     <InfoPill
                                         label="Teléfono"
-                                        value={
-                                            contact?.phone ??
-                                            "959 000 000"
-                                        }
+                                        value={contact?.phone ?? "959 000 000"}
                                         href={`tel:${(
-                                            contact?.phone ??
-                                            "959000000"
+                                            contact?.phone ?? "959000000"
                                         ).replace(/\s/g, "")}`}
                                     />
 
                                     {contact?.email && (
-                                        <InfoPill
-                                            label="Email"
-                                            value={contact.email}
-                                            href={`mailto:${contact.email}`}
-                                        />
+                                        <div className="min-w-0 max-w-full overflow-hidden">
+                                            <InfoPill
+                                                label="Email"
+                                                value={contact.email}
+                                                href={`mailto:${contact.email}`}
+                                            />
+                                        </div>
                                     )}
-
                                 </Stack>
                             </div>
 
